@@ -40,4 +40,13 @@ class NeedRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function delete(Need $need)
+    {
+
+        $this->entityManager->remove($need);
+        $this->entityManager->flush();
+
+        return $need;
+    }
 }

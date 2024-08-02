@@ -36,8 +36,10 @@
                             <th>Nombre</th>
                             <th>Necesidad</th>
                             <th>Categoria</th>
-                            <th>Plantilla</th>
                             <th>Estado</th>
+                            <th>Plantilla</th>
+                            <th>Editar</th>
+                            <th>Borrar</th>
                             </thead>
                             <tbody>
                             {% for need in needs  %}
@@ -50,6 +52,8 @@
                                 <td>{{ need.categorie }}</td>
                                 <td>{{ need.state }}</td>
                                 <td></td>
+                                <td><a class="btn btn-primary" href="{{ path('app_need_edit',{"id":need.id}) }}"><i class="fa fa-edit"></i></a></td>
+                                <td><a href="{{ path('app_need_delete', {'id': need.id}) }}" class="btn btn-danger disable-btn del-link" type="submit" ><i class="fa fa-trash"></i></a></td>
                             </tr>
                             {% endfor %}
                             </tbody>
