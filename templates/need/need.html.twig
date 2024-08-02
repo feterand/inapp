@@ -1,0 +1,64 @@
+{% extends 'need/bars.html.twig' %}
+
+
+{% set title = "Listado de informes"  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block contenpage %}
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h5>
+            </h5>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>
+                        {{ title }}</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a href="{{ path('app_new_need') }}" class="btn btn-success">Nuevo</a>
+                            </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <table id="example" class="display table table-striped table-bordered dataminetables">
+                            <thead>
+                            <th><input type="checkbox" id="select_all" name="select_all"></th>
+                            <th>Nombre</th>
+                            <th>Necesidad</th>
+                            <th>Categoria</th>
+                            <th>Plantilla</th>
+                            <th>Estado</th>
+                            </thead>
+                            <tbody>
+                            {% for need in needs  %}
+                            <tr>
+
+                                    <td><input type="checkbox" class="chkgrp" name="chkgrp[]" value="{{need.id }}"></td>
+
+                                <td>{{ need.name }}</td>
+                                <td>{{ need.need}}</td>
+                                <td>{{ need.categorie }}</td>
+                                <td>{{ need.state }}</td>
+                                <td></td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
