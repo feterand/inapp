@@ -27,7 +27,7 @@ class NeedController extends AbstractController
     }
 
     #[Route(path: '/', name: 'app_needs')]
-    public function users(): Response
+    public function needs(): Response
     {
         $needs = $this->needRepository->findAll();
 
@@ -47,7 +47,7 @@ class NeedController extends AbstractController
             $this->entityManager->persist($need);
             $this->entityManager->flush();
             $this->addFlash('success', 'Necesidad añadida');
-            return $this->redirectToRoute('app_need');
+            return $this->redirectToRoute('app_needs');
         }
 
         return $this->render('need/needform.html.twig', ['needForm' => $form]);
@@ -65,7 +65,7 @@ class NeedController extends AbstractController
             $this->entityManager->persist($need);
             $this->entityManager->flush();
             $this->addFlash('success', 'Necesidad guardada');
-            return $this->redirectToRoute('app_need');
+            return $this->redirectToRoute('app_needs');
         }
 
         return $this->render('need/needform.html.twig', ['needForm' => $form]);

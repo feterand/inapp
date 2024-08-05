@@ -1,6 +1,6 @@
 {% extends 'bars.html.twig' %}
 
-{% if needForm.vars.value %} {% set title = "Editar"  %} {% else %} {% set title = "Nuevo"  %} {% endif%}
+{% if providerForm.vars.value %} {% set title = "Editar"  %} {% else %} {% set title = "Nuevo"  %} {% endif%}
 {% block title %}{{ title }}{% endblock %}
 {% block contenpage %}
     <div class="">
@@ -16,7 +16,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h5><a href="{{ path('app_needs') }}">{{ "Informes" }}</a> >> {{ title}} </h5>
+                        <h5><a href="{{ path('app_providers') }}">{{ "Informes" }}</a> >> {{ title}} </h5>
                         <ul class="nav navbar-right panel_toolbox">
 
                             </li>
@@ -24,16 +24,16 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        {{ form_start(needForm) }}
-                        {{ form_widget(needForm) }}
+                        {{ form_start(providerForm) }}
+                        {{ form_widget(providerForm) }}
                         <div class="ln_solid"></div>
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <a class="btn btn-warning" href="{{ path('app_needs') }}">Cancelar</a>
+                                <a class="btn btn-warning" href="{{ path('app_providers') }}">Cancelar</a>
                                 <button type="submit" name="valider" class="btn btn-success">Enviar</button>
                             </div>
                         </div>
-                        {{ form_end(needForm) }}
+                        {{ form_end(providerForm) }}
                     </div>
                 </div>
             </div>

@@ -19,6 +19,7 @@ class NeedFormType extends AbstractType
             ->add('need', TextType::class , ['label'=>"Necesidad"])
             ->add('categorie')
             ->add('state')
+            ->add('quantity')
             ->add('createdAt', null, [
                 'widget' => 'single_text',
             ])

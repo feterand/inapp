@@ -1,4 +1,4 @@
-{% extends 'need/bars.html.twig' %}
+{% extends 'bars.html.twig' %}
 
 
 {% set title = "Listado de informes"  %}
@@ -36,6 +36,7 @@
                             <th>Nombre</th>
                             <th>Necesidad</th>
                             <th>Categoria</th>
+                            <th>Cantidad</th>
                             <th>Estado</th>
                             <th>Plantilla</th>
                             <th>Editar</th>
@@ -50,6 +51,7 @@
                                 <td>{{ need.name }}</td>
                                 <td>{{ need.need}}</td>
                                 <td>{{ need.categorie }}</td>
+                                <td>{{ need.quantity }}</td>
                                 <td>{{ need.state }}</td>
                                 <td></td>
                                 <td><a class="btn btn-primary" href="{{ path('app_need_edit',{"id":need.id}) }}"><i class="fa fa-edit"></i></a></td>

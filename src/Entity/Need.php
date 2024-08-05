@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\NeedRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -34,6 +36,20 @@ class Need
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $quantity = null;
+
+    /**
+     * @var Collection<int, Provider>
+     */
+    #[ORM\ManyToMany(targetEntity: Provider::class, inversedBy: 'needs')]
+    private Collection $provider_id;
+
+    public function __construct()
+    {
+        $this->provider_id = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -116,5 +132,41 @@ class Need
     public function setCreatedAtValue()
     {
         $this->createdAt = new \DateTimeImmutable();
+    }
+
+    public function getQuantity(): ?float
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(?float $quantity): static
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Provider>
+     */
+    public function getProviderId(): Collection
+    {
+        return $this->provider_id;
+    }
+
+    public function addProviderId(Provider $providerId): static
+    {
+        if (!$this->provider_id->contains($providerId)) {
+            $this->provider_id->add($providerId);
+        }
+
+        return $this;
+    }
+
+    public function removeProviderId(Provider $providerId): static
+    {
+        $this->provider_id->removeElement($providerId);
+
+        return $this;
     }
 }
