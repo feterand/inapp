@@ -14,7 +14,7 @@ class Template
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nombre = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $url = null;
@@ -34,14 +34,14 @@ class Template
         return $this;
     }
 
-    public function getNombre(): ?string
+    public function getName(): ?string
     {
-        return $this->nombre;
+        return $this->name;
     }
 
-    public function setNombre(string $nombre): static
+    public function setName(string $name): static
     {
-        $this->nombre = $nombre;
+        $this->name = $name;
 
         return $this;
     }

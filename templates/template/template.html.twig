@@ -1,0 +1,63 @@
+{% extends 'bars.html.twig' %}
+
+{% set title = "Listado de plantillas"  %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block contenpage %}
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h5>
+                </h5>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>
+                            {{ title }}</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a href="{{ path('app_new_template') }}" class="btn btn-success">Nuevo</a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="row">
+                            <table id="example" class="display table table-striped table-bordered dataminetables">
+                                <thead>
+                                <th><input type="checkbox" id="select_all" name="select_all"></th>
+                                <th>Nombre</th>
+                                <th>Fichero</th>
+                                <th>Categoria</th>
+                                <th>Editar</th>
+                                <th>Borrar</th>
+                                </thead>
+                                <tbody>
+                                {% for template in templates  %}
+                                    <tr>
+
+                                        <td><input type="checkbox" class="chkgrp" name="chkgrp[]" value="{{template.id }}"></td>
+
+                                        <td>{{ template.name }}</td>
+                                        <td>{{ template.url}}</td>
+                                        <td>{{ template.categorie }}</td>
+                                        <td><a class="btn btn-primary" href="{{ path('app_template_edit',{"id":template.id}) }}"><i class="fa fa-edit"></i></a></td>
+                                        <td><a href="{{ path('app_template_delete', {'id': template.id}) }}" class="btn btn-danger disable-btn del-link" type="submit" ><i class="fa fa-trash"></i></a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'bars.html.twig' %}
+
+{% if templateForm.vars.value %} {% set title = "Editar"  %} {% else %} {% set title = "Nuevo"  %} {% endif%}
+{% block title %}{{ title }}{% endblock %}
+{% block contenpage %}
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h5><a href="{{ path('app_templates') }}">{{ "Plantillas" }}</a> >> {{ title}} </h5>
+                        <ul class="nav navbar-right panel_toolbox">
+
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        {{ form_start(templateForm) }}
+                        {{ form_widget(templateForm) }}
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <a class="btn btn-warning" href="{{ path('app_templates') }}">Cancelar</a>
+                                <button type="submit" name="valider" class="btn btn-success">Enviar</button>
+                            </div>
+                        </div>
+                        {{ form_end(templateForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
