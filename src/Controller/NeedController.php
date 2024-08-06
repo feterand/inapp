@@ -26,7 +26,7 @@ class NeedController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/', name: 'app_needs')]
+    #[Route(path: '/needs', name: 'app_needs')]
     public function needs(): Response
     {
         $needs = $this->needRepository->findAll();
