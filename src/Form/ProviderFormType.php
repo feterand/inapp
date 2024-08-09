@@ -22,6 +22,7 @@ class ProviderFormType extends AbstractType
                 'class' => Need::class,
                 'choice_label' => 'name',
                 'multiple' => true,
+                'required' => false,
             ])
         ;
     }

@@ -29,12 +29,32 @@ class ProviderController extends AbstractController
     public function new(Request $request): Response
     {
         $form = $this->createForm(ProviderFormType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            /** @var Provider $provider */
+            $provider= $form->getData();
+            $this->entityManager->persist($provider);
+            $this->entityManager->flush();
+            $this->addFlash('success', 'Proveedor añadido');
+            return $this->redirectToRoute('app_providers');
+        }
         return $this->render('provider/providerform.html.twig', ['providerForm' => $form]);
     }
     #[Route(path: '/provider/edit/{id}', name: 'app_provider_edit')]
     public function edit(Request $request, Provider $provider): Response
     {
         $form= $this->createForm(ProviderFormType::class,$provider);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            /** @var Provider $provider */
+            $provider= $form->getData();
+            $this->entityManager->persist($provider);
+            $this->entityManager->flush();
+            $this->addFlash('success', 'Proveedor modificado');
+            return $this->redirectToRoute('app_providers');
+        }
         return $this->render('provider/providerform.html.twig', ['providerForm' => $form]);
     }
     #[Route(path: '/provider/delete/{id}', name: 'app_provider_delete')]

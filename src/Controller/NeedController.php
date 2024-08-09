@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\Need;
+use App\Entity\Provider;
 use App\Form\NeedFormType;
 use App\Repository\NeedRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +27,7 @@ class NeedController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/needs', name: 'app_needs')]
+    #[Route(path: '/', name: 'app_needs')]
     public function needs(): Response
     {
         $needs = $this->needRepository->findAll();
@@ -38,6 +39,7 @@ class NeedController extends AbstractController
 
     public function new(Request $request)
     {
+
         $form = $this->createForm(NeedFormType::class,null);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
